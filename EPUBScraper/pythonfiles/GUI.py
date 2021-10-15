@@ -1,10 +1,10 @@
 import sys
 from wuxia import scrape
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QComboBox, QPushButton,QWidget, QLineEdit
-from PyQt5.QtCore import QRunnable, Qt, QThreadPool
+from PyQt5.QtCore import QRunnable, Qt, QThreadPool, QObject,QThread, pyqtSignal
 
-class Runnable(QRunnable):
-
+class Worker(QObject):
+    finished = pyqtSignal()
     def __init__(self, fchap, lchap, site):
 
         super().__init__()
@@ -17,7 +17,7 @@ class Runnable(QRunnable):
     def run(self):
 
         scrape(int(self.fchap),int(self.lchap),self.site)
-
+        self.finished.emit()
 
 
 class Gui(QMainWindow):
@@ -40,11 +40,11 @@ class Gui(QMainWindow):
         lchaplabel.setText("Last Chapter")
         lchaplabel.move(220,75)
 
-        button = QPushButton('Scrape', self)
-        button.setToolTip('Click here when ready to scrape!')
-        button.move(110, 150)
+        self.button = QPushButton('Scrape', self)
+        self.button.setToolTip('Click here when ready to scrape!')
+        self.button.move(110, 150)
 
-        button.clicked.connect(self.runTasks)
+        self.button.clicked.connect(self.runTasks)
 
         self.site.resize(315,25)
         self.site.move(10, 25)
@@ -60,10 +60,23 @@ class Gui(QMainWindow):
         self.show()
 
     def runTasks(self):
-        pool = QThreadPool.globalInstance()
-        runnable = Runnable(self.fchap.text(),self.lchap.text(),self.site.text())
-        pool.start(runnable)
+        # Step 2: Create a QThread object
+        self.thread = QThread()
+        # Step 3: Create a worker object
+        self.worker = Worker(self.fchap.text(),self.lchap.text(),self.site.text())
+        # Step 4: Move worker to the thread
+        self.worker.moveToThread(self.thread)
+        self.thread.started.connect(self.worker.run)
+        self.worker.finished.connect(self.thread.quit)
+        self.worker.finished.connect(self.worker.deleteLater)
+        self.thread.finished.connect(self.thread.deleteLater)
+        # Step 6: Start the thread
+        self.thread.start()
 
+        self.button.setEnabled(False)
+        self.thread.finished.connect(
+            lambda: self.button.setEnabled(True)
+        )
 
 
 
