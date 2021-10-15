@@ -1,7 +1,7 @@
-import sys
+
 from wuxia import scrape
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QComboBox, QPushButton,QWidget, QLineEdit
-from PyQt5.QtCore import QRunnable, Qt, QThreadPool, QObject,QThread, pyqtSignal
+from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton,QLineEdit
+from PyQt5.QtCore import QObject,QThread, pyqtSignal
 
 class Worker(QObject):
     finished = pyqtSignal()

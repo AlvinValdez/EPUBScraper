@@ -1,4 +1,4 @@
-import sys
+
 import os
 
 save_path = './chapters/'
