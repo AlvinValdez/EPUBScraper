@@ -1,4 +1,4 @@
-import sys
+
 import os
 
 save_path = './chapters/'
@@ -22,7 +22,7 @@ def scrape(fchap, lchap,site):
         site = baseSite + nextChapter
         textfile = "Chapter " + str(x) + ".xhtml"
         completeName = os.path.join(save_path, textfile)
-        print(completeName)
+
         f = open(completeName, "a", encoding='utf-8')
         f.write(str(chapter))
 
@@ -35,9 +35,5 @@ def scrape(fchap, lchap,site):
 
         site = baseSite + nextChapter
 
-        print(site)
-        print(chapter.contents)
-        f.close()
-if __name__ == '__main__':
-   scrape(1,3000,"https://www.wuxiaworld.com/novel/legend-of-the-dragon-king/ldk-chapter-0")
 
+        f.close()
