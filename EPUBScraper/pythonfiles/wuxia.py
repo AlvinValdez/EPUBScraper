@@ -1,7 +1,9 @@
+import logging
 
+from convert_to_safe_file_name import convert_to_file_name
 import os
 
-save_path = './chapters/'
+
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 
@@ -16,6 +18,15 @@ def scrape(fchap, lchap,site):
 
         page = urlopen(req)
         soup = BeautifulSoup(page)
+        folder = soup.find(class_='caption').find('h4')
+
+
+        folder = convert_to_file_name(str(folder.text))
+
+        save_path = './'+str(folder)+'/'
+        if not os.path.exists(save_path):
+            os.mkdir(save_path)
+
         nextChapter = soup.find(class_='next').find(class_='btn btn-link').get('href')
         results = soup.find('div', id='chapter-content').find_all("p")
         chapter = soup.find('div', id='chapter-outer').find('h4')
@@ -37,3 +48,5 @@ def scrape(fchap, lchap,site):
 
 
         f.close()
+
+

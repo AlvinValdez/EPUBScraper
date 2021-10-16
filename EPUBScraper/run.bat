@@ -1,3 +1,3 @@
-cd C:\Users\Alvin\Documents\GitHub\EPUBScaper\EPUBScraper\pythonfiles
+cd ./pythonfiles
 python main.py
 /k
