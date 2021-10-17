@@ -9,6 +9,13 @@ from urllib.request import Request, urlopen
 
 
 def scrape(fchap, lchap,site):
+    """
+    Takes a first chapter and last chapter along with what chapter to begin scraping from.(Site is a link to that chapter)
+    :param fchap:
+    :param lchap:
+    :param site:
+    :return:
+    """
     baseSite = "https://www.wuxiaworld.com"
 
 
@@ -27,9 +34,15 @@ def scrape(fchap, lchap,site):
         if not os.path.exists(save_path):
             os.mkdir(save_path)
 
+        "Grabs a link to the next chapter"
         nextChapter = soup.find(class_='next').find(class_='btn btn-link').get('href')
+
+        "Finds all the chapter content of the current chapter"
         results = soup.find('div', id='chapter-content').find_all("p")
+
+        "Gets the current chapter header"
         chapter = soup.find('div', id='chapter-outer').find('h4')
+
         site = baseSite + nextChapter
         textfile = "Chapter " + str(x) + ".xhtml"
         completeName = os.path.join(save_path, textfile)
@@ -38,6 +51,8 @@ def scrape(fchap, lchap,site):
         f.write(str(chapter))
 
         for y in results:
+
+            "Checks if the content was actually scraped successfully. If not it tries again"
             if results != None:
                 f.write(str(y))
 
