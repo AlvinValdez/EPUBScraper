@@ -65,3 +65,5 @@ def scrape(fchap, lchap,site):
         f.close()
 
 
+if __name__ == '__main__':
+    scrape(1,5,'https://www.wuxiaworld.com/novel/second-life-ranker/slr-chapter-1')
