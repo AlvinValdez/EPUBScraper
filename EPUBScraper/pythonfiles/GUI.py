@@ -16,7 +16,10 @@ class Worker(QObject):
 
     def run(self):
 
-        scrape(int(self.fchap),int(self.lchap),self.site)
+        for x in range(int(self.fchap),int(self.lchap)):
+            scrape(x, self.site)
+
+
         self.finished.emit()
 
 
