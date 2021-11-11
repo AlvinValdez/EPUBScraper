@@ -1,0 +1,5 @@
+from test_wuxia import test_scrape
+from test_convert_to_safe_file_name import test_convert_to_file_name
+
+test_convert_to_file_name()
+test_scrape()

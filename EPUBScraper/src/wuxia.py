@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
 
 
-def scrape(chapter,site):
+def scrape(chapternum,site):
     baseSite = "https://www.wuxiaworld.com"
 
 
@@ -37,17 +37,25 @@ def scrape(chapter,site):
     chapter = soup.find('div', id='chapter-outer').find('h4')
 
     site = baseSite + nextChapter
-    textfile = "Chapter " + str(chapter) + ".xhtml"
+    textfile = "Chapter " + str(chapternum) + ".xhtml"
     completeName = os.path.join(save_path, textfile)
 
     f = open(completeName, "a", encoding='utf-8')
     f.write(str(chapter))
 
+
+
+    for y in results:
+        if results != None:
+            f.write(str(y))
+        else:
+            return False
+
     site = baseSite + nextChapter
 
     f.close()
 
-    return f
+    return chapter
 
 if __name__ == '__main__':
-    scrape(1,'https://www.wuxiaworld.com/novel/second-life-ranker/slr-chapter-1')
+    scrape(1,'https://www.wuxiaworld.com/novel/nine-star-hegemon/nshba-chapter-1')
