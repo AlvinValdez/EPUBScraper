@@ -1,6 +1,4 @@
-import logging
-
-from convert_to_safe_file_name import convert_to_file_name
+import src.convert_to_file_name.convert_to_safe_file_name as convert
 import os
 
 
@@ -26,7 +24,7 @@ class Wuxia():
         folder = soup.find(class_='caption').find('h4')
 
 
-        folder = convert_to_file_name(str(folder.text))
+        folder = convert.convert_to_file_name(str(folder.text))
 
         self.save_path = './'+str(folder)+'/'
         if not os.path.exists(self.save_path):

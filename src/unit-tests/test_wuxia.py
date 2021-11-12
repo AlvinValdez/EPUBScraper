@@ -1,11 +1,11 @@
 import filecmp
 import os
-import sys
-import pytest
-sys.path.insert(1, '../.')
-from wuxia import *
+from src.parsers.wuxia import Wuxia
+
+
 
 def test_scrape():
+
     test = Wuxia('https://www.wuxiaworld.com/novel/nine-star-hegemon/nshba-chapter-1',1,10)
     arrayOfHeaders = [
         '<h4 class="">Chapter 1 Memories of a Pill Sovereign</h4>',
@@ -27,15 +27,15 @@ def test_scrape():
 
 
 
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 1.xhtml','Nine-Star-Hegemon-Body-Art/'+'test1.xhtml') == True
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 2.xhtml','Nine-Star-Hegemon-Body-Art/'+'test2.xhtml') == True
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 3.xhtml','Nine-Star-Hegemon-Body-Art/'+'test3.xhtml') == True
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 4.xhtml','Nine-Star-Hegemon-Body-Art/'+'test4.xhtml') == True
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 5.xhtml','Nine-Star-Hegemon-Body-Art/'+'test5.xhtml') == True
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 6.xhtml','Nine-Star-Hegemon-Body-Art/'+'test6.xhtml') == True
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 7.xhtml','Nine-Star-Hegemon-Body-Art/'+'test7.xhtml') == True
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 8.xhtml','Nine-Star-Hegemon-Body-Art/'+'test8.xhtml') == True
-    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 9.xhtml','Nine-Star-Hegemon-Body-Art/'+'test9.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 1.xhtml','testfiles/'+'test1.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 2.xhtml','testfiles/'+'test2.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 3.xhtml','testfiles/'+'test3.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 4.xhtml','testfiles/'+'test4.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 5.xhtml','testfiles/'+'test5.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 6.xhtml','testfiles/'+'test6.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 7.xhtml','testfiles/'+'test7.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 8.xhtml','testfiles/'+'test8.xhtml') == True
+    assert filecmp.cmp('Nine-Star-Hegemon-Body-Art/'+'Chapter 9.xhtml','testfiles/'+'test9.xhtml') == True
 
 
     os.remove('Nine-Star-Hegemon-Body-Art/'+'Chapter 1.xhtml')

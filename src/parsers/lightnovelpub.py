@@ -1,6 +1,4 @@
-import logging
-
-from convert_to_safe_file_name import convert_to_file_name
+import src.convert_to_file_name.convert_to_safe_file_name as convert
 import os
 
 
@@ -36,7 +34,7 @@ def pubscrape(fchap, lchap,site):
         folder = soup.find(class_='booktitle')
 
 
-        folder = convert_to_file_name(str(folder.text))
+        folder = convert.convert_to_file_name(str(folder.text))
 
         save_path = './'+str(folder)+'/'
         if not os.path.exists(save_path):
