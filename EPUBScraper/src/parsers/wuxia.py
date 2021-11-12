@@ -1,6 +1,4 @@
-import logging
-
-from convert_to_safe_file_name import convert_to_file_name
+from convert_to_file_name.convert_to_safe_file_name import convert_to_file_name
 import os
 
 

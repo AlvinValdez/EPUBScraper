@@ -1,5 +1,5 @@
 
-from wuxia import scrape
+from parsers.wuxia import scrape
 from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton,QLineEdit
 from PyQt5.QtCore import QObject,QThread, pyqtSignal
 
