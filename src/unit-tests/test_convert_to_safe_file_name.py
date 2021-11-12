@@ -1,5 +1,5 @@
 import sys
-import convert_to_file_name.convert_to_safe_file_name as convert
+import src.convert_to_file_name.convert_to_safe_file_name as convert
 
 
 def test_convert_to_file_name():
