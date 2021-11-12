@@ -74,4 +74,4 @@ def pubscrape(fchap, lchap,site):
 
 
 if __name__ == '__main__':
-    pubscrape(1,10  ,"https://www.lightnovelpub.com/novel/tensei-shitara-slime-datta-ken-ln-19072354/chapter-0")
+    pubscrape(1,10,"https://www.lightnovelpub.com/novel/tensei-shitara-slime-datta-ken-ln-19072354/chapter-0")
