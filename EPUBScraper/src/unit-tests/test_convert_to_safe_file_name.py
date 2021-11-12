@@ -1,5 +1,6 @@
 import sys
 import pytest
+sys.path.insert(1, '../.')
 from convert_to_safe_file_name import convert_to_file_name
 
 def test_convert_to_file_name():
