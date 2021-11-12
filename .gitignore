@@ -1,5 +1,5 @@
 *.xhtml
-
+!testfiles/*.xhtml
 # Editors
 .vscode/
 .idea/
