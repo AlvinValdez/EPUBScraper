@@ -1,4 +1,4 @@
-from gui import Gui
+from src.gui.GUI import Gui
 import sys
 from PyQt5.QtWidgets import QApplication
 if __name__ == '__main__':
