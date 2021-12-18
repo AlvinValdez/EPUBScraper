@@ -1,3 +1,3 @@
-cd ./pythonfiles
+cd ./src
 python main.py
 PAUSE

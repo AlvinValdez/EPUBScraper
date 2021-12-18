@@ -1,4 +1,4 @@
-import src.convert_to_file_name.convert_to_safe_file_name as convert
+import convert_to_file_name.convert_to_safe_file_name as convert
 import os
 
 
@@ -11,8 +11,8 @@ class Wuxia():
         self.site = site
         self.save_path = ''
         self.nextChapter = ''
-        self.chapterStart = chapter_start
-        self.chapterEnd = chapter_end
+        self.chapterStart = int(chapter_start)
+        self.chapterEnd = int(chapter_end)
 
     def scrape(self):
         baseSite = "https://www.wuxiaworld.com"

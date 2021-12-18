@@ -1,5 +1,5 @@
 
-from parsers.wuxia import scrape
+from parsers.wuxia import Wuxia
 from PyQt5.QtWidgets import QMainWindow, QLabel, QPushButton,QLineEdit
 from PyQt5.QtCore import QObject,QThread, pyqtSignal
 
@@ -15,10 +15,9 @@ class Worker(QObject):
 
 
     def run(self):
-
-        for x in range(int(self.fchap),int(self.lchap)):
-            
-            scrape(x, self.site)
+        wuxia = Wuxia(self.site, self.fchap, self.lchap)
+        for x in range(int(wuxia.chapterStart),int(wuxia.chapterEnd)+1):
+            wuxia.scrape()
 
 
         self.finished.emit()
